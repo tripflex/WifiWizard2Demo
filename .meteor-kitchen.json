@@ -74,11 +74,11 @@
 		},
 		{
 			"path": "client/views/wifi_scan/wifi_scan.html",
-			"checksum": "53e2dda5555db5fea6a3315a8e0c3d46b0e21547"
+			"checksum": "7a19d5a0b78f6074647f9bc206b2056ca5c9267c"
 		},
 		{
 			"path": "client/views/wifi_scan/wifi_scan.js",
-			"checksum": "a413448f0ef0406f70e977a50dcbcab166127c10"
+			"checksum": "4085db53d000fa9265946cac1989186b9bd5fc98"
 		},
 		{
 			"path": "client/views/wifi_scan/wifi_scan_controller.js",
@@ -290,6 +290,8 @@
 	],
 	"packages": {
 		"meteor": [
+			"tripflex:suiblocker",
+			"reactive-dict",
 			"natestrauser:animate-css",
 			"blaze-html-templates",
 			"http",
