@@ -3,10 +3,73 @@
 		<div class="row" id="title_row">
 			<div class="col-md-12">
 				<h2 id="page_title" class="pull-left">
-					Wifi Scan
+					Scan WiFi Networks
 				</h2>
 			</div>
+			<div>
+			</div>
 		</div>
+	</div>
+	<div class="text-center">
+		<button class="btn btn-primary">
+			Scan WiFi Networks
+		</button>
+	</div>
+	<div>
+		<table class="table table-responsive">
+			<thead>
+				<tr>
+					<th>
+						SSID
+					</th>
+					<th>
+						BSSID
+					</th>
+					<th>
+						Frequency
+					</th>
+					<th>
+						Capabilities
+					</th>
+					<th>
+						Chan Width
+					</th>
+					<th>
+						Center Freq 0
+					</th>
+					<th>
+						Center Freq 1
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each foundNetworks}}
+				<tr>
+					<td>
+						{{SSID}}
+					</td>
+					<td>
+						{{BSSID}}
+					</td>
+					<td>
+						{{frequency}}
+					</td>
+					<td>
+						{{capabilities}}
+					</td>
+					<td>
+						{{channelWidth}}
+					</td>
+					<td>
+						{{centerFreq0}}
+					</td>
+					<td>
+						{{centerFreq1}}
+					</td>
+				</tr>
+				{{/each}}
+			</tbody>
+		</table>
 	</div>
 </template>
 
