@@ -1,3 +1,5 @@
 node_modules/
 src/.meteor/local/
 .idea/
+package-lock.json
+.meteor-kitchen.json
