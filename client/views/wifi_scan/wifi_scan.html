@@ -1,75 +1,99 @@
 <template name="WifiScan">
-	<div class="page-container" id="content">
+	<div class="page-container container" id="content">
+
 		<div class="row" id="title_row">
 			<div class="col-md-12">
 				<h2 id="page_title" class="pull-left">
 					Scan WiFi Networks
 				</h2>
 			</div>
-			<div>
-			</div>
 		</div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center">
+                    <button id="search" class="btn btn-primary">
+                        Scan WiFi Networks
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>
+                                SSID
+                            </th>
+                            <th>
+                                BSSID
+                            </th>
+                            <th>
+                                Frequency
+                            </th>
+                            <th>
+                                Capabilities
+                            </th>
+                            <th>
+                                Chan Width
+                            </th>
+                            <th>
+                                Center Freq 0
+                            </th>
+                            <th>
+                                Center Freq 1
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#if hasSearched}}
+                            {{>WifiScanResults}}
+                        {{else}}
+                            <tr>
+                                <td colspan="7">
+                                    <div class="text-center">
+                                        Click scan to search for WiFi networks
+                                    </div>
+                                </td>
+                            </tr>
+                        {{/if}}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
 	</div>
-	<div class="text-center">
-		<button class="btn btn-primary">
-			Scan WiFi Networks
-		</button>
-	</div>
-	<div>
-		<table class="table table-responsive">
-			<thead>
-				<tr>
-					<th>
-						SSID
-					</th>
-					<th>
-						BSSID
-					</th>
-					<th>
-						Frequency
-					</th>
-					<th>
-						Capabilities
-					</th>
-					<th>
-						Chan Width
-					</th>
-					<th>
-						Center Freq 0
-					</th>
-					<th>
-						Center Freq 1
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				{{#each foundNetworks}}
-				<tr>
-					<td>
-						{{SSID}}
-					</td>
-					<td>
-						{{BSSID}}
-					</td>
-					<td>
-						{{frequency}}
-					</td>
-					<td>
-						{{capabilities}}
-					</td>
-					<td>
-						{{channelWidth}}
-					</td>
-					<td>
-						{{centerFreq0}}
-					</td>
-					<td>
-						{{centerFreq1}}
-					</td>
-				</tr>
-				{{/each}}
-			</tbody>
-		</table>
-	</div>
+
 </template>
 
+<template name="WifiScanResults">
+    {{#each foundNetworks}}
+        <tr>
+            <td>
+                {{SSID}}
+            </td>
+            <td>
+                {{BSSID}}
+            </td>
+            <td>
+                {{frequency}}
+            </td>
+            <td>
+                {{capabilities}}
+            </td>
+            <td>
+                {{channelWidth}}
+            </td>
+            <td>
+                {{centerFreq0}}
+            </td>
+            <td>
+                {{centerFreq1}}
+            </td>
+        </tr>
+    {{/each}}
+</template>

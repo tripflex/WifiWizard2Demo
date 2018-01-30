@@ -1,12 +1,97 @@
 <template name="WifiConnection">
-	<div class="page-container container" id="content">
-		<div class="row" id="title_row">
-			<div class="col-md-12">
-				<h2 id="page_title" class="pull-left">
-					WiFi Connection
-				</h2>
-			</div>
-		</div>
-	</div>
+    <div class="container container-lg">
+        <h5 class="text-center">
+            Connect to WiFi AP
+            <br />			<small>
+            Select the network below and enter a password to connect.
+        </small>
+        </h5>
+
+
+            {{#if hasSearched}}
+                <div class="mda-form-control">
+
+                    <select class="form-control" name="SSID" id="SSID">
+                        {{#each foundAPs}}
+                            <option value="{{SSID}}" data-capabilities="{{capabilities}}">{{SSID}} {{capabilities}} ({{level}})</option>
+                        {{/each}}
+                    </select>
+                    <div class="mda-form-control-line">
+                    </div>
+                    <label>
+                        WiFi Network
+                    </label>
+                </div>
+
+                <div class="mda-form-group float-label">
+                    <div class="mda-form-control">
+                        <input type="text" id="password" name="password" class="form-control">
+                        <label class="control-label">
+                            Password
+                        </label>
+                    </div>
+                </div>
+
+            {{else}}
+                <div class="text-center">
+                    Click Update Networks to scan for available networks.  For Android devices you must first Add the network, then Connect to it.
+                </div>
+            {{/if}}
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-xs-12">
+                    <a href="#" id="update" class="btn btn-default btn-block">
+                        Update Networks
+                    </a>
+                    {{#if hasSearched}}
+                        <button id="add" class="btn btn-info btn-block">
+                            <span class="fa fa-plus">
+                            </span>
+                            Add Wifi (Android)
+                        </button>
+                        <button id="connect" class="btn btn-block btn-primary">
+                            <span class="fa fa-check">
+                            </span>
+                            Connect to WiFi
+                        </button>
+                        <button id="disconnectNetwork" class="btn btn-block btn-warning">
+                            <span class="fa fa-minus">
+                            </span>
+                            Disconnect (iOS/Android) & Remove (Android)
+                        </button>
+                        <button id="remove" class="btn btn-info btn-block">
+                            <span class="fa fa-minus">
+                            </span>
+                            Remove WiFi (Android)
+                        </button>
+                        <button id="enable" class="btn btn-info btn-block">
+                            <span class="fa fa-plus">
+                            </span>
+                            Enable SSID (Android)
+                        </button>
+                        <button id="disable" class="btn btn-info btn-block">
+                            <span class="fa fa-minus">
+                            </span>
+                            Disable SSID (Android)
+                        </button>
+                        <button id="getNetID" class="btn btn-info btn-block">
+                            Get SSID Network ID (Android)
+                        </button>
+
+                        <button id="enableDeviceWifi" class="btn btn-info btn-block">
+                            <span class="fa fa-plus">
+                            </span>
+                            Enable Device WiFi (Android)
+                        </button>
+                        <button id="disableDeviceWifi" class="btn btn-info btn-block">
+                            <span class="fa fa-minus">
+                            </span>
+                            Disable Device Wifi (Android)
+                        </button>
+                    {{/if}}
+                </div>
+
+            </div>
+
+    </div>
 </template>
 

@@ -3,10 +3,68 @@
 		<div class="row" id="title_row">
 			<div class="col-md-12">
 				<h2 id="page_title" class="pull-left">
-					Home
+					WifiWizard2 >= 3.0.0 Demo
 				</h2>
 			</div>
 		</div>
+
+        {{#if lastMessage}}
+            <div class="row">
+                <div class="well">
+                    {{lastMessage}}
+                </div>
+            </div>
+        {{/if}}
+        <div class="row">
+            <button id="reassociate" class="btn btn-info btn-block">
+                Reassociate
+            </button>
+
+            <button id="reconnect" class="btn btn-info btn-block">
+                Reconnect
+            </button>
+
+            <button id="disconnect" class="btn btn-info btn-block">
+                Disconnect WiFi
+            </button>
+
+            <button id="enable" class="btn btn-success btn-block">
+                Enable WiFi
+            </button>
+
+            <button id="disable" class="btn btn-danger btn-block">
+                Disable WiFi
+            </button>
+
+            <button id="currentNetID" class="btn btn-info btn-block">
+                Current Net ID
+            </button>
+
+            <button id="currentSSID" class="btn btn-info btn-block">
+                Current SSID
+            </button>
+
+            <button id="currentBSSID" class="btn btn-info btn-block">
+                Current BSSID/MAC
+            </button>
+
+            <button id="wifiIP" class="btn btn-info btn-block">
+                Current WiFi IP
+            </button>
+
+            <button id="wifiIPinfo" class="btn btn-info btn-block">
+                Current WiFi IP & Subnet
+            </button>
+
+            <button id="requestPermission" class="btn btn-info btn-block">
+                Request Permission
+            </button>
+
+            <button id="isConnectedToInternet" class="btn btn-info btn-block">
+                Is connected to Internet?
+            </button>
+
+        </div>
 	</div>
 </template>
 
