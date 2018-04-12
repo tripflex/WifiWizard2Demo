@@ -118,8 +118,25 @@ Template.WifiConnection.events({
 			}
 
 			await SUIBlock.asyncBlur( 'Connecting to ' + config.SSID + '...', 2000 );
-			await WifiWizard2.connect( config.SSID, config.password, config.algorithm );
+			await WifiWizard2.connect( config.SSID, false, config.password, config.algorithm );
 			await SUIBlock.asyncBlur( 'CONNECTED to ' + config.SSID + '...', 2000, true );
+
+		} catch( error ){
+			handleError( error, 'Connect Error' );
+		}
+	},
+	"click #connect-bindall": async function(){
+
+		try {
+			let config = getUserConfig();
+
+			if( ! config ){
+				return false;
+			}
+
+			await SUIBlock.asyncBlur( 'Connecting (and bindAll) to ' + config.SSID + '...', 2000 );
+			await WifiWizard2.connect( config.SSID, true, config.password, config.algorithm );
+			await SUIBlock.asyncBlur( 'CONNECTED (and bindAll) to ' + config.SSID + '...', 2000, true );
 
 		} catch( error ){
 			handleError( error, 'Connect Error' );
@@ -185,6 +202,61 @@ Template.WifiConnection.events({
 
 		} catch( error ){
 			handleError( error, 'Enable Error!' );
+		}
+
+	},
+	"click #can-ping-router": async function(){
+
+		try {
+
+			let routerIP = await WifiWizard2.getWifiRouterIP();
+
+			await SUIBlock.asyncBlur( 'Attempting to ping router IP ' + routerIP + '...', 2000 );
+			await WifiWizard2.canPingWifiRouter();
+			await SUIBlock.asyncBlur( 'Successfully pinged router IP ' + routerIP , 2000, true );
+
+		} catch( error ){
+			handleError( error, 'Error pinging router IP!' );
+		}
+
+	},
+	"click #homie-get-test": async function(){
+
+		try {
+
+			await SUIBlock.asyncBlur( 'Attempting to query Homie device-info ...', 2000, true );
+
+      HTTP.get( 'http://192.168.123.1/device-info', [], function(error,response){
+
+      	if( error ){
+          console.log( 'Homie GET Test Error (data):' );
+          console.log( JSON.stringify( error ) );
+				}
+
+        console.log( 'Homie GET Test Result' );
+        console.log( JSON.stringify( response ) );
+        SUIBlock.blur( 'GET check complete, please check console', true, false, true );
+
+      });
+
+
+		} catch( error ){
+			handleError( error, 'Error testing homie GET!' );
+		}
+
+	},
+	"click #enable-bindall": async function(){
+
+		let SSID = getSSID();
+
+		try {
+
+			await SUIBlock.asyncBlur( 'Enabling and binding all network requests to ' + SSID + ' ...', 2000 );
+			await WifiWizard2.enable( SSID, true );
+			await SUIBlock.asyncBlur( 'ENABLED ' + SSID + ' ...', 2000, true );
+
+		} catch( error ){
+			handleError( error, 'Enable BindALL Error!' );
 		}
 
 	},

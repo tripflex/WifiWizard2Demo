@@ -84,7 +84,7 @@ Template.Home.events({
 		try {
 
 			await SUIBlock.asyncBlur( 'Getting current WiFi SSID...', 2000 );
-			let SSID = await WifiWizard2.getCurrentSSID();
+			let SSID = await WifiWizard2.getConnectedSSID();
 			await SUIBlock.asyncBlur( 'Current network SSID is ' + SSID, 2000, true );
 			lastResult.set( 'Current SSID: ' + SSID );
 		} catch( error ){
@@ -97,7 +97,7 @@ Template.Home.events({
 		try {
 
 			await SUIBlock.asyncBlur( 'Getting current WiFi BSSID...', 2000 );
-			let BSSID = await WifiWizard2.getCurrentBSSID();
+			let BSSID = await WifiWizard2.getConnectedBSSID();
 			await SUIBlock.asyncBlur( 'Current network BSSID is ' + BSSID, 2000, true );
 			lastResult.set( 'Current BSSID: ' + BSSID );
 		} catch( error ){
@@ -115,6 +115,19 @@ Template.Home.events({
 			lastResult.set( 'Current IP: ' + IP );
 		} catch( error ){
 			handleError( error, 'getWifiIP Error!' );
+		}
+
+	},
+	"click #wifiRouterIP": async function(){
+
+		try {
+
+			await SUIBlock.asyncBlur( 'Getting current WiFi Router IP...', 2000 );
+			let IP = await WifiWizard2.getWifiRouterIP();
+			await SUIBlock.asyncBlur( 'Current WiFi Router IP ' + IP, 2000, true );
+			lastResult.set( 'Current Router IP: ' + IP );
+		} catch( error ){
+			handleError( error, 'getWifiRouterIP Error!' );
 		}
 
 	},
