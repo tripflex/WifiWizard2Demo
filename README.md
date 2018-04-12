@@ -12,8 +12,23 @@ The majority of the code for handling all actions can be found in the files belo
 ### Scan WiFi
 [https://github.com/tripflex/WifiWizard2Demo/blob/master/client/views/wifi_scan/wifi_scan.js](https://github.com/tripflex/WifiWizard2Demo/blob/master/client/views/wifi_scan/wifi_scan.js)
 
+### Using Latest Release
+To use the latest version of WifiWizard2 from npm, you will first need to remove the published version from the project
+```shell
+meteor remove cordova:wifiwizard2
+```
+
+To install and use this plugin in a Meteor project (which is exactly what this demo is), you have to specify the exact version from NPM repository: https://www.npmjs.com/package/wifiwizard2
+
+And then add, like so:
+
+```shell
+meteor add cordova:wifiwizard2@3.0.0
+```
+
+
 ### Using Latest Git in Demo
-To use the latest version of WifiWizard from git, you will first need to remove the published version from the project
+To use the latest version of WifiWizard2 from git, you will first need to remove the published version from the project
 ```shell
 meteor remove cordova:wifiwizard2
 ```
